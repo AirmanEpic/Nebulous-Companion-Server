@@ -114,33 +114,6 @@ app80.get("/getStatus",function(req, res){
 })
 let serverdata = {}
 
-setInterval(()=>{
-    updateServerData()
-}, 30000)
-
-function updateServerData(){
-    console.log("updateServerData")
-    axios.get('https://api.steampowered.com/IGameServersService/GetServerList/v1/?key=A96B85AE8E6A3E52C726563D902C2B77&filter=appid\\887570')
-    .then((response)=>{
-        console.log(response.data)
-        serverdata = response.data
-    })
-}
-
-updateServerData()
-
-app80.get("/allservers",function(req, res){
-    console.log("allservers")
-    //https://api.steampowered.com/IGameServersService/GetServerList/v1/?key=A96B85AE8E6A3E52C726563D902C2B77&filter=appid\887570
-
-    //just respond with the data from this url
-    //https://api.steampowered.com/IGameServersService/GetServerList/v1/?key=A96B85AE8E6A3E52C726563D902C2B77&filter=appid\887570
-
-    //make a request to the steam api
-
-    res.send(serverdata)
-})
-
 app80.get("/needsplayers/:addr",function(req, res){
     console.log("needsplayers")
     //manually add a flag to the server data
